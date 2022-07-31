@@ -47,7 +47,7 @@ We think the ablation study in Table 4 has included most circumstances mentioned
 SAPA has two modules: kernel generation and feature assembly. Feature assembly is a standard procedure and does not require ablation study. 
 The kernel generation has 3 steps: XY embedding, similarity computation, and kernel normalization.
 
-- **XY embedding.** The effect of embedding or not can be observed by comparing SAPA-I and SAPA-B, where results are shown in Tables 2, 3, and 4. 
+- **XY embedding.** The effect of embedding or not can be observed by comparing SAPA-I and SAPA-B, and the results are shown in Tables 2, 3, and 4. 
 Additionally, we also explored the influence of embedding dimension in Table 4.
 
 - **Similarity computation.** We have validated inner product, bilinear, and gated bilinear similarity in main experiments (Tables 2 and 3). 
