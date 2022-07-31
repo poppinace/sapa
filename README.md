@@ -3,7 +3,7 @@
 
 
 ### W9Gs -- BA
-We appreciate the reviewer for highlighting the significance of point affiliation. Here we will answer the questions and explain some minor issues.
+We appreciate the reviewer for highlighting the significance of point affiliation. We address the concerns as follows.
 
 **Learnable upsampling parameters may lead to overfitting.**
 
@@ -11,25 +11,23 @@ We address this concern from three aspects:
 
 1) Our framework only introduces a few amount of additional parameters, which occupies $0.03\%\sim1.4\%$ of the overall number of parameters in the baseline models. 
 Even if a model overfits data due to excessive number of parameters, perhaps the baseline model should be checked first. 
-It is unlikely that such a few additional parameters of the upsampler are the main cause of overfitting.
+It is unlikely that such a few additional upsampling parameters would dominate overfitting.
 
-2) SAPA-I has no additional parameter. The results in Table 2 show that SAPA-I can still achieve good performance, 
-suggesting that it is the similarity-aware kernel that works.
+2) SAPA-I has no additional parameter. The results in Table 2 show that SAPA-I still achieves good performance.
 
-3) Overfitting may loosely related to the number of parameters in upsampling but a specific upsampler used. 
-We would like to use a toy-level experiment to support this claim. 
-Since overfitting happens more likely on small data sets than large-scale ones, we select a toy-level two-class semantic segmentation dataset, 
-i.e., the Weizmann Horse, and use SegNet as the baseline model. 
-We replace the default max unpooling with nearest neighbor (NN) interpolation, bilinear interpolation, and SAPA-B, respectively. 
-We train the model for 50 epochs and keep a consistent learning rate of 0.01. 
-By plotting the learning curves, the results show that, the training loss of the three upsamplers all can decrease smoothly to between 0.26 and 0.36, 
-but their validation losses vary significantly. 
-At the 10-th epoch the validation loss of SegNet-NN begins to increase, from the minimum of 0.126 to 0.166 at the 50-th epoch, 
-and that of SegNet-bilinear begins to increase at the 14-th epoch, from the minimum of 0.119 to 0.138 at the 50th epoch. 
-On the contrary, the training loss of SegNet-SAPA decreases faster and the validation loss reaches its minimum of 0.057 within 10 epochs, 
+3) Overfitting may loosely related to the number of upsampling parameters but a specific upsampler used. 
+We use a toy-level experiment to exposit this claim. 
+Since overfitting happens more likely on small data sets, we select a small two-class segmentation dataset, the Weizmann Horse, 
+and use SegNet as the baseline. We replace the default max unpooling with NN interpolation, bilinear interpolation, and SAPA-B, respectively. 
+We train the model for 50 epochs and use a constant learning rate of 0.01. 
+By plotting the learning curves, the training losses of the three upsamplers all decrease smoothly to $0.26\sim0.36$, 
+but their val losses vary significantly. 
+At the 10-th epoch the val loss of SegNet-NN begins to increase, from the minimum of 0.126 to 0.166 at the 50-th epoch, 
+and that of SegNet-bilinear increasees at the 14-th epoch, from 0.119 to 0.138 at the 50th epoch. 
+Instead, the training loss of SegNet-SAPA decreases faster and the val loss reaches the minimum of 0.057 within 10 epochs, 
 and fluctuates from 0.057 to 0.060 during the rest of epochs. The mIoU metrics are 89.5 for NN, 90.1 for bilinear, and 94.9 for SAPA. 
-This experiment shows that the additional learnable parameters in SAPA encouragenot only fast training but also better generalization.
-Considering the behaviors of SAPA on this small data set, we have reason to believe that overfitting has weak correlation with the learnable upsampling parameters. 
+The experiment shows that the additional learnable parameters in SAPA encourage not only fast training but also better generalization.
+Hence overfitting may have weak correlation with learnable upsampling parameters. 
 Perhaps as Bengio's ICLR 2017 paper says, "understanding deep learning requires rethinking generalization".
 
 **Normalization should be used before similarity computation due to different data distribution between encoder and decoder features.**
@@ -43,7 +41,7 @@ Indeed we observe that the loss does not decrease without normalization").
 
 **The current ablation study in Table 4 did not cover all the variants.**
 
-We think the ablation study in Table 4 has included most circumstances mentioned by the reviewer, including the validation of XY embedding, gated addition, and kernel generation. 
+We think the ablation study in Table 4 has included most circumstances mentioned by the reviewer.
 SAPA has two modules: kernel generation and feature assembly. Feature assembly is a standard procedure and does not require ablation study. 
 The kernel generation has 3 steps: XY embedding, similarity computation, and kernel normalization.
 
@@ -57,16 +55,15 @@ By comparing P and G in Table 4, it also justified the effectiveness of gated ad
 - **kernel normalization.** We have explored four normalization functions for computing the similarity score in Table 4. 
 Additionally, we also explored the influence of the upsampling kernel size.
 
-Perhaps all the results are summarized in a single line Table 4 (due to the page limit), which makes it a little bit difficult to interpret the results.
+Perhaps all the results are summarized in a single line in Table 4, which makes it difficult to interpret the results.
 We have reorganized Table 4 and double checked what is missing in the ablation studies. 
-Here we further supplement the result of the upsampling kernel without normalization (41.45 mIoU). 
-It has been included in the Table 4 of the revision (L270-L272).
+We further supplement the result of the upsampling kernel without normalization (41.45 mIoU). 
+See the Table 4 of the revision (L270-L272).
 
 **The use of the "low-rank" version.**
 
 The motivation behind low-rank version is to reduce the number of parameters and computational complexity. 
-We have clarified this in the revision (L200-L202, "We model the projection matrices to be low-rank, i.e., $d < C$, 
-to reduce the number of parameters and computational complexity. ").
+We have clarified this in the revision (L200-L202).
 
 **Using subscript of subscript should be avoided.**
 
@@ -106,18 +103,16 @@ where ground-truth alpha mattes contain many high-frequency local regions; SAPA 
 
 
 ### 4pwd -- BA
-The authors thank the reviewer for constructive comments, particularly on some presentation details. We address these concerns as follows.
+The authors thank the reviewer for constructive comments, particularly on presentation. We address these concerns as follows.
 
-**The notion of `cluster' seems misleading. There is no explicit clustering and affiliation estimation process in the proposed framework. 
+**The notion of 'cluster' seems misleading. There is no explicit clustering and affiliation estimation process in the proposed framework. 
 The manuscript needs to be revised in a more compact form.**
 
 Our approach is not related to clustering approaches. We use the term 'semantic cluster' to indicate a region where points have similar semantic meaning. 
 Since this term has been clearly defined in the footnote of page 1, we think this may not mislead readers. 
-In addition, we do have an affiliation assignment process, but in an implicit way with the similarity comparison. 
-The process of the point affiliation is to find an appropriate semantic cluster to which each upsampled point should belong. 
+In addition, we do have an affiliation assignment process, but in an implicit way with the similarity scores in the kernel.
 By encoding the mutual similarity between encoder and decoder feature points in the kernel, 
 the upsampled point could be assigned to a semantic cluster that is most similar to. 
-In short, the definition of the semantic cluster is the preliminary for point affiliation, and point affiliation is the preliminary for similarity comparison.
 
 It is true that our idea can be explained with Eq. (2), Eq. (3), and Figure 3, but we think other parts can help one to understand our idea more easily. 
 Following the suggestion of the reviewer, we have simplified the symbol system and have rewritten some parts of text to improve the clarity and conciseness, 
@@ -125,14 +120,11 @@ e.g., we have squeezed Eq. (4) into one single line. Please take a look at our s
 
 **The equation (4) is meaningless.**
 
-In contrast to the reviewer, we think that Eq. (4) expresses a key characteristic of SAPA for noise suppression on the encoder feature. 
-No matter what the noise is in the form of texture or illumination, 
-it does not interfere with the affiliation of the upsampled point due to the smoothness of the decoder window to which the point is related. 
-Our work originates from an observation that upsamplers using encoder features like IndexNet and A2U work poorly in semantic segmentation tasks. 
-The visualization of their generated upsampling kernel weights (Fig. 2) shows that undesirable upsampling kernels can introduce noise, 
-such as unexpected texture or color from encoder features, into upsampled features, which has a negative influence on semantic coherence.
+In contrast to the reviewer, we think that Eq. (4) expresses a key characteristic of SAPA for noise suppression on the encoder feature.
+Our work originates from an observation that upsamplers using encoder features like IndexNet and A2U work poorly in semantic segmentation. 
+From Fig. 2, their upsampling kernels introduce unexpected texture or color from encoder features into upsampled features, which affects semantic coherence.
 Yet, involving encoder features does enhance the boundary quality, 
-so we would like to explore how to use encoder features to compensate details while not introducing noise, especially on interior regions. 
+so wezh explore how to use encoder features to compensate details while not introducing noise, especially on interior regions. 
 Eq.(4) and the comparison in Figure 2 exactly explain and emphasize how we effectively block the noise from the encoder features. 
 Hence, we expect to leave Eq. (4) as it is.
 
@@ -156,7 +148,7 @@ Considering the texture noise, which results in $\widetilde{I}_p\neq\widetilde{I
 and will even be sensitive to the texture noise. However, in this case, SAPA (Eq. (4)) enables the kernel to keep an unchanged constant, 
 regardless of the value of the encoder point.
 
-**The explanation of some details in Fig. 3.**
+**The explanation of Fig. 3.**
 
 We are sorry for causing misleading here. SAPA has three variants, named SAPA-I, SAPA-B, and SAPA-G. 
 We attempt to merge the three in a single figure, but it seems rather confusing. 
@@ -165,12 +157,12 @@ We have found a way to improve the clarity of Fig. 3 and have updated it in the 
 
 **The sensitivity to the noise in the encoder feature.**
 
-As mentioned above, the noise blocking does not rely only on a single encoder point, 
-but rely on the similarity relation between each encoder feature point and the decoder feature points in a local window. 
-By Eq. (2) and Eq. (4) SAPA will upsample a smooth region to a smooth region, regardless of the value of the encoder points.
-By the way, the mentioned 'noise' is the unexpected details in encoder features compared with the label mask. 
-If we intend to segment a person from background, then the clothes on body would be noise. 
-We do not refer to the signal noise that may destroy the content of a picture. In our paper, we assume we still process natural images.
+As mentioned above, noise suppression does not rely only on a single encoder point, 
+but on the similarity between each encoder point and its corresponding local decoder points. 
+Per Eq. (2) and Eq. (4), SAPA will upsample a smooth region to a smooth region, regardless of the value of the encoder point.
+Note that, we refer the 'noise' as the unexpected details in encoder features compared with the label mask. 
+If segmenting a person from background, then the clothes on body would be noise. 
+We do not refer to the signal noise that may destroy the image content. We assume we still process natural images.
 
 
 ### jFju -- WA
