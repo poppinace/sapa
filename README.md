@@ -13,6 +13,8 @@ Huazhong University of Science and Technology, China
 
 ## Installation
 Our codes are tested on Python 3.8.8 and PyTorch 1.9.0.
+cd sapa
+python setup.py develop
 
 ## Citation
 If you find this work or code useful for your research, please cite:
