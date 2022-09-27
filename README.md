@@ -13,6 +13,9 @@ Proc. Annual Conference on Neural Information Processing Systems (NeurIPS 2022)
 
 Huazhong University of Science and Technology, China
 
+## Updates
+- 27 Sep 2022: Code is released, and camera ready is avaliable on [arXiv](https://arxiv.org/abs/2209.12866)!
+
 ## Highlights
 - **Simple and effective:** SAPA defines a novel class of similarity-aware upsampling kernels, which can simultaenously encourage semantic smoothness and boundrary sharpness;
 - **Generic:** SAPA can benefit a number of dense prediction tasks. In our paper, we validate semantic segmentation, object detection, depth estimation, and image matting;
@@ -31,7 +34,7 @@ python setup.py develop
 
 ## Reported Results
 
-Here is a brief summary of our reported results in the paper:
+Here is a summary of our reported results on different dense prediction tasks:
 #### Semantic Segmentation on ADE20K
 
 | Segformer B1  | mIoU  | FLOPs     | Params    | MaskFormer SwinBase   | mIoU  | FLOPs  | Params   | Mask2Former SwinBase   | mIoU  | FLOPs  | Params   |
@@ -48,7 +51,7 @@ Here is a brief summary of our reported results in the paper:
 -**Notes:** we observe that MaskFormer and Mask2Former are somewhat unstable. Due to limited resources, we only report one-run results. 
 
 #### Image Matting on Adode Composition-1K
-| A2U Matting | Params  | SAD  | MSE | Grad | Conn |
+| A2U Matting (R34) | Params  | SAD  | MSE | Grad | Conn |
 | :---:        | :---:    | :---: | :---:| :---: | :---: |
 Nearest | 8.05 | 37.51 | 0.0096 | 19.07 | 35.72 |
 Bilinear | 8.05 | 37.31 | 0.0103 | 21.38 | 35.39 |
@@ -58,6 +61,28 @@ A2U | +0.02 | 32.15 | 0.0082 | 16.39 | 29.25 |
 SAPA-I | +0 | 34.25 | 0.0091 | 18.93 | 32.09 |
 SAPA-B | +0.04 | 31.19 | 0.0079 | **15.48** | 28.30 |
 SAPA-G | +0.04 | **30.98** | **0.0077** | 15.59 | **27.96** |
+
+#### Depth Estimation on NYU Depth V2
+BTS (R50) | Params | $\delta < 1.25$ | $\delta < 1.25^2$ | $\delta < 1.25^3$ | Abs Rel | Sq Rel | RMS | RMSlog | log10 |
+| :---: |  :---:   | :---: | :---: | :---: | :---: | :---: | :---: | :---:   | :---: |
+Nearest | 49.53 | 0.865 | 0.975 | 0.993 | 0.119 | 0.075 | 0.419 | 0.152 | 0.051 |
+CARAFE | +0.41 | 0.864 | 0.974 | 0.994 | 0.117 | 0.071 | 0.418 | 0.152 | 0.051 |
+IndexNet | +44.20 | 0.866 | 0.976 | **0.995** | 0.117 | 0.071 | 0.416 | 0.151 | 0.050 |
+A2U | +0.08 | 0.860 | 0.973 | 0.993 | 0.121 | 0.077 | 0.429 | 0.156 | 0.052 |
+SAPA-B | +0.16 | 0.871 | 0.977 | 0.994 | **0.116** | 0.070 | 0.410 | 0.151 | 0.050 |
+SAPA-G | +0.25 | **0.872** | **0.978** | **0.995** | **0.116** | **0.069** | **0.408** | **0.149** | **0.049** |
+
+#### Object Detection on MS COCO
+
+Faster R-CNN (R50) | Params | $AP$ | $AP_{50}$ | $AP_{75}$ | $AP_S$ | $AP_M$ | $AP_{L}$ 
+| :---: |  :---:   | :---: | :---: | :---: | :---: | :---: | :---: | :---:   | :---: |
+Nearest  | 41.53 | 37.4 | 58.1 | 40.4 | 21.2 | 41.0 | 48.1 |
+CARAFE   | +0.22 | **38.6** | **59.9** | **42.2** | **23.3** | **42.2** | **49.7** |
+IndexNet | +6.30 | 37.6 | 58.4 | *40.9* | 21.5 | 41.3 | *49.2* |
+A2U      | +0.03 | 37.3 | 58.7 | 40.0 | 21.7 | 41.1 | 48.5 |
+SAPA-I   | +0 | 37.7 | *59.2* | 40.6 | 22.2 | 41.2 | 48.4 |
+SAPA-B   | +0.05 | *37.8* | *59.2* | 40.6 | *22.4* | *41.4* | 49.1 |
+SAPA-G   | +0.05 | *37.8* | 59.1 | 40.8 | 21.5 | *41.4* | 48.6 |
 
 
 ## Citation
