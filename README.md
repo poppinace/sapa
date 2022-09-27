@@ -1,7 +1,7 @@
 
 # SAPA: Similarity-Aware Point Affiliation for Feature Upsampling
 
-<p align="center"><img src="upsampled_feat.png" width="450" title="SAPA"/></p>
+<p align="center"><img src="upsampled_feat.png" width="600" title="SAPA"/></p>
 
 This repository includes the official implementation of SAPA, a universal feature upsampling operator, presented in our paper:
 
@@ -20,7 +20,7 @@ Huazhong University of Science and Technology, China
 - **Lightweight:** SAPA only introduces negligible extra computational overhead and number of parameters.
 - **Memory-efficient:** We have provided a CUDA implementation to reduce memory cost and to improve efficiency.
 
-<p align="center"><img src="qualitative_results.png" width="450" title="SAPA"/></p>
+<p align="center"><img src="qualitative_results.png" width="600" title="SAPA"/></p>
 
 ## Installation
 Our codes are tested on Python 3.8.8 and PyTorch 1.9.0.
@@ -44,6 +44,7 @@ Here is a brief summary of our reported results in the paper:
 | SAPA-I        | 43.05 | +0.75     | +0.00     | SAPA-I                | 53.25 | +0.43  | +0.00    | SAPA-I                | *55.05* | +0.33  | +0.00    |
 | SAPA-B        | *43.20* | +1.02   | +0.1      | SAPA-B                | 53.15 | +0.59  | +0.05    | SAPA-B                | 54.98 | +0.45  | +0.02    |
 | SAPA-G        | **44.39** | +1.02 | +0.1      | SAPA-G                | **53.78** | +0.59 | +0.05 | SAPA-G                | **55.22** | +0.45 | +0.02 |
+
 -**Notes:** we observe that MaskFormer and Mask2Former are somewhat unstable. Due to limited resources, we only report one-run results. 
 
 #### Image Matting on Adode Composition-1K
