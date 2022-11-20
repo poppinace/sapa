@@ -7,13 +7,14 @@ This repository includes the official implementation of SAPA, a universal featur
 
 **[SAPA: Similarity-Aware Point Affiliation for Feature Upsampling](https://arxiv.org/abs/2209.12866)**
 
-Proc. Annual Conference on Neural Information Processing Systems (NeurIPS 2022)
+Proc. Annual Conference on Neural Information Processing Systems (NeurIPS 2022) **Spotlight**
 
 [Hao Lu](https://sites.google.com/site/poppinace/), Wenze Liu, Zixuan Ye, Hongtao Fu, Yuliang Liu, Zhiguo Cao
 
 Huazhong University of Science and Technology, China
 
 ## Updates
+- 11 Nov 2022: Our paper is picked as **Spotlight** presentation (5%)!
 - 27 Sep 2022: Code is released, and camera ready is avaliable on [arXiv](https://arxiv.org/abs/2209.12866)!
 
 ## Highlights
