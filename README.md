@@ -41,7 +41,7 @@ Here is a summary of our reported results on different dense prediction tasks:
 
 | Segformer B1  | mIoU  | FLOPs     | Params    | MaskFormer SwinBase   | mIoU  | FLOPs  | Params   | Mask2Former SwinBase   | mIoU  | FLOPs  | Params   |
 | :--:          | :--:  | :--:      | :--:      | :--:                  | :--:  | :--:   | :--:     | :--:                  | :--:  | :--:   | :--:     | 
-| Nearest        | --    | --        | --        | Nearst                | 52.70 | 195    | 102      | Nearst        | --    | --        | --        | 
+| Nearest        | --    | --        | --        | Nearest                | 52.70 | 195    | 102      | Nearest        | --    | --        | --        | 
 | Bilinear      | 41.68 | 15.91     | 13.74     | Bilinear              | --    | --     | --       | Bilinear      | 53.90 | 223     | 107     | 
 | CARAFE        | 42.82 | +1.45     | +0.44     | CARAFE                | *53.53* | +0.84  | +0.22  | CARAFE        | 53.94 | +0.63     | +0.07     | 
 | IndexNet      | 41.50 | +30.65    | +12.60    | IndexNet              | 52.92 | +17.64 | +6.30    | IndexNet      | 54.71 | +13.44    | +2.10    | 
