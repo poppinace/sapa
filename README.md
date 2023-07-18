@@ -14,7 +14,7 @@ Proc. Annual Conference on Neural Information Processing Systems (NeurIPS 2022) 
 Huazhong University of Science and Technology, China
 
 ## Updates
-- 17 July 2023: The code of the extended version [On Point Affiliation in Feature Upsampling](https://arxiv.org/abs/2307.08198) is [availible](https://github.com/tiny-smart/sapa).
+- 17 July 2023: The code of the extended version [On Point Affiliation in Feature Upsampling](https://arxiv.org/abs/2307.08198) is available [here](https://github.com/tiny-smart/sapa).
 - 11 Nov 2022: Our paper is picked as **Spotlight** presentation (5%)!
 - 27 Sep 2022: Code is released, and camera ready is avaliable on [arXiv](https://arxiv.org/abs/2209.12866)!
 
