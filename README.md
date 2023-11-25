@@ -50,7 +50,7 @@ Here is a summary of our reported results on different dense prediction tasks:
 | SAPA-B        | *43.20* | +1.02   | +0.1      | SAPA-B                | 53.15 | +0.59  | +0.05    | SAPA-B                | 54.98 | +0.45  | +0.02    |
 | SAPA-G        | **44.39** | +1.02 | +0.1      | SAPA-G                | **53.78** | +0.59 | +0.05 | SAPA-G                | **55.22** | +0.45 | +0.02 |
 
--**Notes:** we observe that MaskFormer and Mask2Former are somewhat unstable. Due to limited resources, we only report one-run results. 
+-**Notes:** i) For SegFormer, we use their official [code](https://github.com/NVlabs/SegFormer) rather than the version in [mmsegmentation](https://github.com/open-mmlab/mmsegmentation), and conduct experiments on a **single** A6000 GPU. ii) We observe that MaskFormer and Mask2Former are somewhat unstable. Due to limited resources, we only report one-run results. 
 
 #### Image Matting on Adode Composition-1K
 | A2U Matting (R34) | Params  | SAD  | MSE | Grad | Conn |
